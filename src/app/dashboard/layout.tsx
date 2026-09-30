@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useAppDispatch, useAppSelector, toggleSidebar } from '@/store';
+import { useAppDispatch, useAppSelector, toggleSidebar, RootState } from '@/store';
 import { AppShell, SidebarContainer } from '@/components/styled/Layout.styled';
 
 export default function DashboardLayout({
@@ -10,7 +10,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const dispatch = useAppDispatch();
-  const isSidebarOpen = useAppSelector((state) => state.ui.isSidebarOpen);
+  const isSidebarOpen = useAppSelector((state: RootState) => state.ui.isSidebarOpen);
 
   return (
     <AppShell>
