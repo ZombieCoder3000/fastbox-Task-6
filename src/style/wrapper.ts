@@ -1,25 +1,28 @@
 import styled from 'styled-components';
+import { device } from './device';
 
-export const AppShell = styled.div`
+export const MainWrapper = styled.div`
   display: flex;
   min-height: 100vh;
-  background-color: ${({ theme }) => theme.colors.background};
+  width: 100%;
+  background-color: #f8fafc;
 `;
 
-export const MainContainer = styled.main`
+export const ContentWrapper = styled.main`
   flex: 1;
   display: flex;
   flex-direction: column;
   min-width: 0;
   overflow-y: auto;
+  padding: 1.5rem;
 `;
 
-export const SidebarContainer = styled.aside<{ $isOpen: boolean }>`
+export const SidebarWrapper = styled.aside<{ $isOpen?: boolean }>`
   width: 260px;
   background-color: #0f172a;
   transition: transform 0.25s ease-in-out;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+  @media (max-width: 1024px) {
     position: fixed;
     top: 0;
     bottom: 0;

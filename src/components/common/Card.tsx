@@ -2,10 +2,11 @@
 
 import React from 'react';
 
-export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface CardProps {
   children: React.ReactNode;
   header?: React.ReactNode;
   footer?: React.ReactNode;
+  className?: string;
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -13,16 +14,22 @@ export const Card: React.FC<CardProps> = ({
   header,
   footer,
   className = '',
-  ...props
 }) => {
   return (
     <div
       className={`bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden ${className}`}
-      {...props}
     >
-      {header && <div className="px-6 py-4 border-b border-slate-200">{header}</div>}
-      <div className="p-6">{children}</div>
-      {footer && <div className="px-6 py-4 border-t border-slate-200 bg-slate-50">{footer}</div>}
+      {header && (
+        <div className="px-5 py-4 border-b border-slate-100 bg-slate-50/50">
+          {header}
+        </div>
+      )}
+      <div className="p-5">{children}</div>
+      {footer && (
+        <div className="px-5 py-3 border-t border-slate-100 bg-slate-50/50">
+          {footer}
+        </div>
+      )}
     </div>
   );
 };

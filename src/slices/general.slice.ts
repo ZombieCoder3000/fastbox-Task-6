@@ -1,17 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export interface UIState {
+export interface GeneralState {
   isSidebarOpen: boolean;
   themeMode: 'light' | 'dark';
 }
 
-const initialState: UIState = {
+const initialState: GeneralState = {
   isSidebarOpen: true,
   themeMode: 'light',
 };
 
-export const uiSlice = createSlice({
-  name: 'ui',
+export const generalSlice = createSlice({
+  name: 'general',
   initialState,
   reducers: {
     toggleSidebar: (state) => {
@@ -26,5 +26,5 @@ export const uiSlice = createSlice({
   },
 });
 
-export const { toggleSidebar, setSidebarOpen, setThemeMode } = uiSlice.actions;
-export default uiSlice.reducer;
+export const { toggleSidebar, setSidebarOpen, setThemeMode } = generalSlice.actions;
+export default generalSlice.reducer;
