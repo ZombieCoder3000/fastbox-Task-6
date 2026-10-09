@@ -1,0 +1,16 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "react/forbid-elements": [
+      "error",
+      {
+        "forbid": [
+          {
+            "element": "div",
+            "message": "Use a styled component built on a semantic element instead of div."
+          }
+        ]
+      }
+    ]
+  }
+}
