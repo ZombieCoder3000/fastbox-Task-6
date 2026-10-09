@@ -5,7 +5,7 @@ import { Container } from "@/style/wrapper";
 const Home: React.FC = () => {
   return (
     <Container className="text-brand">
-      <PageTitle title="FastBox" subtitle="Foundation setup" />
+      <PageTitle title="FastBox"  />
     </Container>
   );
 };
