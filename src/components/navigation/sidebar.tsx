@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { APP_NAME } from "@/constants";
+import { APP_NAME } from "@/infrastructure/constants";
 import { SIDEBAR_ITEMS } from "@/navigation/nav-items";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { selectIsSidebarOpen, setSidebarOpen } from "@/slices/general.slice";

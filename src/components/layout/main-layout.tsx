@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { APP_NAME, ROUTES } from "@/constants";
+import { APP_NAME, ROUTES } from "@/infrastructure/constants";
 import type { WithChildren } from "@/infrastructure/services/interface/common.types";
 import { Caption } from "@/style/text";
 import {

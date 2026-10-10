@@ -1,4 +1,4 @@
-import { ROUTES } from "@/constants";
+import { ROUTES } from "@/infrastructure/constants";
 import type { NavItem } from "@/infrastructure/services/interface/common.types";
 
 export const SIDEBAR_ITEMS: NavItem[] = [

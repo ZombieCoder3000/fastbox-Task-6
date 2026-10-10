@@ -1,4 +1,4 @@
-import { ROUTES } from "@/constants";
+import { ROUTES } from "@/infrastructure/constants";
 import type { LayoutComponent } from "@/infrastructure/services/interface/common.types";
 import AuthLayout from "@/components/layout/auth-layout";
 import DashboardLayout from "@/components/layout/dashboard-layout";
