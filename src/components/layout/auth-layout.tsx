@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
-import { APP_NAME } from "@/infrastructure/constants";
+import { APP_NAME } from "@/constants";
 import type { WithChildren } from "@/infrastructure/services/interface/common.types";
 import { AuthCard, AuthShell } from "@/style/wrapper";
 

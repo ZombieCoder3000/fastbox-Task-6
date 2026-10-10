@@ -1,12 +1,13 @@
 import React from "react";
-import PageTitle from "@/components/common/page-title";
-import { Container } from "@/style/wrapper";
+import FeaturesSection from "@/components/landing/features-section";
+import HeroSection from "@/components/landing/hero-section";
 
 const Home: React.FC = () => {
   return (
-    <Container className="text-brand">
-      <PageTitle title="FastBox"  />
-    </Container>
+    <>
+      <HeroSection />
+      <FeaturesSection />
+    </>
   );
 };
 

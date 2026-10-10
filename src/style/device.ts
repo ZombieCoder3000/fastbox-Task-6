@@ -1,4 +1,4 @@
-import { BREAKPOINTS } from "@/infrastructure/constants/breakpoints";
+import { BREAKPOINTS } from "@/constants/breakpoints";
 
 export const device = {
   sm: `(min-width: ${BREAKPOINTS.SM}px)`,

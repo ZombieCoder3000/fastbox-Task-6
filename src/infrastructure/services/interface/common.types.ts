@@ -16,3 +16,27 @@ export interface NavItem {
   label: string;
   href: string;
 }
+
+export type FeatureIconName =
+  | "zap"
+  | "shield"
+  | "mapPin"
+  | "dollar"
+  | "clock"
+  | "smartphone";
+
+export type GradientTone =
+  | "violet"
+  | "blue"
+  | "pink"
+  | "green"
+  | "orange"
+  | "red";
+
+export interface FeatureItem {
+  id: string;
+  title: string;
+  description: string;
+  icon: FeatureIconName;
+  tone: GradientTone;
+}

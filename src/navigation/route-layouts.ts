@@ -1,7 +1,8 @@
-import { ROUTES } from "@/infrastructure/constants";
+import { ROUTES } from "@/constants";
 import type { LayoutComponent } from "@/infrastructure/services/interface/common.types";
 import AuthLayout from "@/components/layout/auth-layout";
 import DashboardLayout from "@/components/layout/dashboard-layout";
+import LandingLayout from "@/components/layout/landing-layout";
 import MainLayout from "@/components/layout/main-layout";
 
 type RouteLayout = {
@@ -21,7 +22,7 @@ const routeLayouts: RouteLayout[] = [
   },
   {
     prefixes: [ROUTES.HOME],
-    layouts: [MainLayout],
+    layouts: [LandingLayout],
     exact: true,
   },
 ];
