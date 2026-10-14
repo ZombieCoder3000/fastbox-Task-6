@@ -1,13 +1,14 @@
-import React from 'react';
-import { MainLayout } from '@/components/layout/main-layout';
+import React from "react";
+import FeaturesSection from "@/components/landing/features-section";
+import HeroSection from "@/components/landing/hero-section";
 
-export default function Home() {
+const Home: React.FC = () => {
   return (
-    <MainLayout>
-      <div className="space-y-2">
-        <h1 className="text-2xl font-bold text-slate-900">FastBox Admin</h1>
-        <p className="text-slate-500 text-sm">Foundation setup initialized.</p>
-      </div>
-    </MainLayout>
+    <>
+      <HeroSection />
+      <FeaturesSection />
+    </>
   );
-}
+};
+
+export default Home;

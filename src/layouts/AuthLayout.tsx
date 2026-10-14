@@ -15,9 +15,9 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
   subtitle,
 }) => {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center px-4 py-12 bg-slate-50">
-      <div className="w-full max-w-md">
-        <div className="text-center mb-8">
+    <main className="min-h-screen flex flex-col justify-center items-center px-4 py-12 bg-slate-50">
+      <section className="w-full max-w-md">
+        <header className="text-center mb-8">
           <Link href="/" className="inline-block text-2xl font-black tracking-tight text-blue-600">
             FastBox
           </Link>
@@ -29,12 +29,14 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
               {subtitle}
             </p>
           )}
-        </div>
+        </header>
 
-        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+        <article className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
           {children}
-        </div>
-      </div>
-    </div>
+        </article>
+      </section>
+    </main>
   );
 };
+
+export default AuthLayout;

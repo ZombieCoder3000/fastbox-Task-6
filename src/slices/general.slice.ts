@@ -1,18 +1,19 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAppSlice } from "@/redux/create-slices";
+import type { PayloadAction } from "@reduxjs/toolkit";
 
-export interface GeneralState {
+interface IGeneral {
   isSidebarOpen: boolean;
-  themeMode: 'light' | 'dark';
+  isMobileNavOpen: boolean;
+  modal: boolean;
 }
 
-const initialState: GeneralState = {
-  isSidebarOpen: true,
-  themeMode: 'light',
-};
-
-export const generalSlice = createSlice({
-  name: 'general',
-  initialState,
+export const generalSlice = createAppSlice({
+  name: "general",
+  initialState: {
+    isSidebarOpen: false,
+    isMobileNavOpen: false,
+    modal: false,
+  } as IGeneral,
   reducers: {
     toggleSidebar: (state) => {
       state.isSidebarOpen = !state.isSidebarOpen;
@@ -20,11 +21,29 @@ export const generalSlice = createSlice({
     setSidebarOpen: (state, action: PayloadAction<boolean>) => {
       state.isSidebarOpen = action.payload;
     },
-    setThemeMode: (state, action: PayloadAction<'light' | 'dark'>) => {
-      state.themeMode = action.payload;
+    toggleMobileNav: (state) => {
+      state.isMobileNavOpen = !state.isMobileNavOpen;
     },
+    setMobileNavOpen: (state, action: PayloadAction<boolean>) => {
+      state.isMobileNavOpen = action.payload;
+    },
+    setModalState: (state, action: PayloadAction<boolean>) => {
+      state.modal = action.payload;
+    },
+  },
+  selectors: {
+    selectIsSidebarOpen: (general) => general.isSidebarOpen,
+    selectIsMobileNavOpen: (general) => general.isMobileNavOpen,
+    selectModalState: (general) => general.modal,
   },
 });
 
-export const { toggleSidebar, setSidebarOpen, setThemeMode } = generalSlice.actions;
-export default generalSlice.reducer;
+export const {
+  toggleSidebar,
+  setSidebarOpen,
+  toggleMobileNav,
+  setMobileNavOpen,
+  setModalState,
+} = generalSlice.actions;
+export const { selectIsSidebarOpen, selectIsMobileNavOpen, selectModalState } =
+  generalSlice.selectors;

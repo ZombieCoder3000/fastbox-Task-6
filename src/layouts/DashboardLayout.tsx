@@ -15,51 +15,50 @@ function DashboardContent({ children }: { children: React.ReactNode }) {
 
   const links = [
     { label: 'Overview', href: ROUTES.DASHBOARD },
-    { label: 'Profile', href: ROUTES.PROFILE },
+    { label: 'Profile', href: '/dashboard/profile' },
   ];
 
   return (
-    <AppShell>
+    <AppShell as="main">
       {isSidebarOpen && (
-        <div
+        <aside
           role="presentation"
+          aria-hidden="true"
           onClick={() => dispatch(toggleSidebar())}
           className="fixed inset-0 z-30 bg-black/40 lg:hidden"
         />
       )}
 
-      <SidebarContainer $isOpen={isSidebarOpen}>
-        <div className="flex flex-col h-full justify-between p-5 text-white">
-          <div className="space-y-6">
+      <SidebarContainer as="aside" $isOpen={isSidebarOpen}>
+        <nav className="flex flex-col h-full justify-between p-5 text-white" aria-label="Sidebar Navigation">
+          <section className="space-y-6">
             <header className="text-xl font-black tracking-tight text-blue-400">
               {APP_NAME}
             </header>
-            <nav>
-              <ul className="space-y-1 text-sm">
-                {links.map((link) => {
-                  const isActive = pathname === link.href;
-                  return (
-                    <li key={link.href}>
-                      <Link
-                        href={link.href}
-                        className={`block px-3 py-2 rounded-lg font-medium transition ${
-                          isActive
-                            ? 'bg-blue-600 text-white'
-                            : 'text-slate-300 hover:bg-slate-800'
-                        }`}
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </nav>
-          </div>
-        </div>
+            <ul className="space-y-1 text-sm">
+              {links.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className={`block px-3 py-2 rounded-lg font-medium transition ${
+                        isActive
+                          ? 'bg-blue-600 text-white'
+                          : 'text-slate-300 hover:bg-slate-800'
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        </nav>
       </SidebarContainer>
 
-      <MainContainer>
+      <MainContainer as="section">
         <header className="p-4 bg-white border-b border-slate-200 flex items-center justify-between">
           <button
             onClick={() => dispatch(toggleSidebar())}
