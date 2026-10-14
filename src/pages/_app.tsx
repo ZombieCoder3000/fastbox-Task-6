@@ -1,14 +1,31 @@
-import type { AppProps } from 'next/app';
-import { Provider } from 'react-redux';
-import { store } from '@/redux/store';
-import { GlobalStyle } from '@/style/globalStyle';
-import '@/style/global.css';
+import type { AppProps } from "next/app";
+import { useRouter } from "next/router";
+import { ThemeProvider, type DefaultTheme } from "styled-components";
+import { getLayoutsForPath } from "@/navigation/route-layouts";
+import StoreProvider from "@/redux/store-provider";
+import GlobalStyle from "@/style/globalStyle";
+import { theme } from "@/style/theme";
+import "@/style/global.css";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return (
-    <Provider store={store}>
-      <GlobalStyle />
-      <Component {...pageProps} />
-    </Provider>
+const MyApp = ({ Component, pageProps }: AppProps) => {
+  const router = useRouter();
+  const layouts = getLayoutsForPath(router.pathname);
+
+  const wrapped = layouts.reduceRight(
+    (children, LayoutComponent) => (
+      <LayoutComponent>{children}</LayoutComponent>
+    ),
+    <Component {...pageProps} />,
   );
-}
+
+  return (
+    <ThemeProvider theme={theme as unknown as DefaultTheme}>
+      <StoreProvider>
+        <GlobalStyle />
+        {wrapped}
+      </StoreProvider>
+    </ThemeProvider>
+  );
+};
+
+export default MyApp;

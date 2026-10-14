@@ -1,17 +1,22 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import generalReducer from '@/slices/general.slice';
+import { generalSlice } from "@/slices/general.slice";
+import type { Action, ThunkAction } from "@reduxjs/toolkit";
+import { combineSlices, configureStore } from "@reduxjs/toolkit";
 
-const rootReducer = combineReducers({
-  general: generalReducer,
-});
+const rootReducer = combineSlices(generalSlice);
 
-export const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
-});
+export type RootState = ReturnType<typeof rootReducer>;
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export const makeStore = () => {
+  return configureStore({
+    reducer: rootReducer,
+  });
+};
+
+export type AppStore = ReturnType<typeof makeStore>;
+export type AppDispatch = AppStore["dispatch"];
+export type AppThunk<ThunkReturnType = void> = ThunkAction<
+  ThunkReturnType,
+  RootState,
+  unknown,
+  Action
+>;

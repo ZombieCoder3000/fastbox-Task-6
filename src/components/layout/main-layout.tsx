@@ -1,31 +1,47 @@
-'use client';
+import React from "react";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import { APP_NAME, ROUTES } from "@/constants";
+import type { WithChildren } from "@/infrastructure/services/interface/common.types";
+import { Caption } from "@/style/text";
+import {
+  AppShell,
+  FooterWrapper,
+  MainContent,
+  StickyHeader,
+} from "@/style/wrapper";
 
-import React from 'react';
-import { MainWrapper, ContentWrapper, SidebarWrapper } from '@/style/wrapper';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { toggleSidebar } from '@/slices/general.slice';
+type MainLayoutProps = WithChildren & {
+  title?: string;
+};
 
-export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const dispatch = useAppDispatch();
-  const isSidebarOpen = useAppSelector((state) => state.general.isSidebarOpen);
-
+const MainLayout: React.FC<MainLayoutProps> = ({
+  children,
+  title = APP_NAME,
+}) => {
   return (
-    <MainWrapper>
-      <SidebarWrapper $isOpen={isSidebarOpen}>
-        <div className="p-5 text-white font-bold text-lg">FastBox</div>
-      </SidebarWrapper>
-      <ContentWrapper>
-        <header className="mb-6 flex items-center justify-between pb-4 border-b border-slate-200">
-          <button
-            onClick={() => dispatch(toggleSidebar())}
-            className="p-2 text-sm text-slate-600 rounded bg-slate-100 lg:hidden"
-            aria-label="Toggle menu"
-          >
-            Menu
-          </button>
-        </header>
-        {children}
-      </ContentWrapper>
-    </MainWrapper>
+    <AppShell>
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <StickyHeader>
+        <Link href={ROUTES.HOME} aria-label={APP_NAME}>
+          <Image
+            src="/images/logo.png"
+            alt={APP_NAME}
+            width={140}
+            height={34}
+            priority
+          />
+        </Link>
+      </StickyHeader>
+      <MainContent>{children}</MainContent>
+      <FooterWrapper>
+        <Caption>© {APP_NAME}</Caption>
+      </FooterWrapper>
+    </AppShell>
   );
 };
+
+export default MainLayout;

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import styled from 'styled-components';
 
 export interface AuthLayoutProps {
   children: React.ReactNode;
@@ -9,32 +10,75 @@ export interface AuthLayoutProps {
   subtitle?: string;
 }
 
+const AuthMain = styled.main`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  background-color: #f8fafc;
+`;
+
+const AuthContainer = styled.section`
+  width: 100%;
+  max-width: 28rem;
+`;
+
+const AuthHeader = styled.header`
+  text-align: center;
+  margin-bottom: 2rem;
+`;
+
+const BrandLink = styled(Link)`
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  color: #2563eb;
+  text-decoration: none;
+`;
+
+const AuthHeading = styled.h2`
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: #0f172a;
+`;
+
+const AuthSubtitle = styled.p`
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #475569;
+`;
+
+const AuthCard = styled.article`
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+`;
+
 export const AuthLayout: React.FC<AuthLayoutProps> = ({
   children,
   title,
   subtitle,
 }) => {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center px-4 py-12 bg-slate-50">
-      <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <Link href="/" className="inline-block text-2xl font-black tracking-tight text-blue-600">
-            FastBox
-          </Link>
-          <h2 className="mt-4 text-2xl font-bold tracking-tight text-slate-900">
-            {title}
-          </h2>
-          {subtitle && (
-            <p className="mt-2 text-sm text-slate-600">
-              {subtitle}
-            </p>
-          )}
-        </div>
+    <AuthMain>
+      <AuthContainer>
+        <AuthHeader>
+          <BrandLink href="/">FastBox</BrandLink>
+          <AuthHeading>{title}</AuthHeading>
+          {subtitle && <AuthSubtitle>{subtitle}</AuthSubtitle>}
+        </AuthHeader>
 
-        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-          {children}
-        </div>
-      </div>
-    </div>
+        <AuthCard>{children}</AuthCard>
+      </AuthContainer>
+    </AuthMain>
   );
 };
+
+export default AuthLayout;
