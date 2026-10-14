@@ -33,6 +33,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
             width={140}
             height={34}
             priority
+            unoptimized
           />
         </Link>
       </StickyHeader>

@@ -38,6 +38,7 @@ const LandingLayout: React.FC<LandingLayoutProps> = ({
             width={180}
             height={44}
             priority
+            unoptimized
           />
         </Link>
         <LandingNav />
